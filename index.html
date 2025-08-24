@@ -5,172 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dota 2 - Найкрасивіший сайт</title>
   <style>
-    /* Основні стилі */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
-
-    body {
-      background: #0a0a0a;
-      color: #fff;
-      line-height: 1.6;
-    }
+    * {margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI",sans-serif;}
+    body {background:#0a0a0a; color:#fff; line-height:1.6;}
 
     /* Хедер */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 10%;
-      background: rgba(0,0,0,0.8);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:20px 10%; background:rgba(0,0,0,0.8);
+      position:fixed; width:100%; top:0; z-index:1000;
+      backdrop-filter: blur(6px);
     }
+    .logo {font-size:28px; font-weight:bold; color:#e74c3c;}
+    .logo span {color:#fff;}
+    nav ul {list-style:none; display:flex; gap:20px;}
+    nav a {color:#fff; text-decoration:none; transition:.3s;}
+    nav a:hover {color:#e74c3c;}
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #e74c3c;
-    }
-
-    .logo span {
-      color: #fff;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #e74c3c;
-    }
-
-    /* Hero секція */
+    /* Hero */
     .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//blog/bg_launch.jpg") no-repeat center/cover;
-      text-align: center;
-      padding: 0 20px;
+      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      text-align:center; padding:0 20px; position:relative; overflow:hidden;
     }
-
-    .hero h1 {
-      font-size: 50px;
-      text-shadow: 0 0 15px #000;
+    .hero video {
+      position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:.6;
     }
-
-    .hero span {
-      color: #e74c3c;
-    }
-
-    .hero p {
-      margin: 20px 0;
-      font-size: 20px;
-    }
-
+    .hero h1 {font-size:56px; text-shadow:0 0 20px #000;}
+    .hero span {color:#e74c3c;}
+    .hero p {margin:20px 0; font-size:22px;}
     .btn {
-      padding: 12px 25px;
-      background: #e74c3c;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
+      padding:12px 25px; background:#e74c3c; color:#fff; text-decoration:none;
+      border-radius:8px; transition:.3s; font-weight:bold;
     }
+    .btn:hover {background:#c0392b; transform:scale(1.05);}
 
-    .btn:hover {
-      background: #c0392b;
-    }
+    /* Про гру */
+    .about {padding:80px 10%; text-align:center;}
+    .about h2 {font-size:32px; margin-bottom:20px; color:#e74c3c;}
+    .about p {max-width:800px; margin:auto; font-size:18px; color:#ddd;}
 
     /* Герої */
-    .heroes {
-      padding: 80px 10%;
-      text-align: center;
-    }
-
+    .heroes {padding:80px 10%; text-align:center;}
+    .heroes h2 {font-size:32px; margin-bottom:20px; color:#e74c3c;}
     .hero-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px; margin-top:30px;
     }
-
     .card {
-      background: #1c1c1c;
-      border-radius: 12px;
-      padding: 15px;
-      transition: transform 0.3s;
-      opacity: 0;
-      transform: translateY(40px);
+      background:#1c1c1c; border-radius:12px; padding:15px; transition:.4s;
+      opacity:0; transform:translateY(40px);
     }
-
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-      transition: 0.6s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
+    .card.show {opacity:1; transform:translateY(0);}
+    .card:hover {transform:scale(1.07);}
+    .card img {max-width:100%; border-radius:8px;}
+    .card h3 {margin-top:10px;}
 
     /* Новини */
-    .news {
-      padding: 80px 10%;
-    }
-
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
+    .news {padding:80px 10%;}
+    .news h2 {font-size:32px; margin-bottom:20px; color:#e74c3c; text-align:center;}
+    .news-list {display:flex; flex-direction:column; gap:20px;}
     .news article {
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 10px;
-      transition: 0.3s;
-      opacity: 0;
-      transform: translateY(40px);
+      background:#1c1c1c; padding:20px; border-radius:10px;
+      opacity:0; transform:translateY(40px); transition:.5s;
     }
-
-    .news article.show {
-      opacity: 1;
-      transform: translateY(0);
-      transition: 0.6s;
-    }
-
-    .news article:hover {
-      background: #292929;
-    }
+    .news article.show {opacity:1; transform:translateY(0);}
+    .news article:hover {background:#292929;}
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      margin-top: 50px;
+      text-align:center; padding:30px; background:#111; margin-top:50px;
     }
+    .socials {margin:10px 0;}
+    .socials a {
+      margin:0 10px; color:#e74c3c; text-decoration:none; font-size:20px;
+      transition:.3s;
+    }
+    .socials a:hover {color:#fff;}
   </style>
 </head>
 <body>
@@ -180,17 +89,31 @@
     <nav>
       <ul>
         <li><a href="#home">Головна</a></li>
+        <li><a href="#about">Про гру</a></li>
         <li><a href="#heroes">Герої</a></li>
         <li><a href="#news">Новини</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Головна секція -->
+  <!-- Hero -->
   <section id="home" class="hero">
+    <video autoplay muted loop>
+      <source src="https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/intro.mp4" type="video/mp4">
+    </video>
     <h1>Ласкаво просимо у світ <span>Dota 2</span></h1>
     <p>Стань героєм у найепічнішій битві 5 на 5!</p>
     <a href="#heroes" class="btn">Переглянути героїв</a>
+  </section>
+
+  <!-- Про гру -->
+  <section id="about" class="about">
+    <h2>Про Dota 2</h2>
+    <p>
+      Dota 2 — це культова командна гра 5 на 5 від Valve. Тут ти можеш обрати одного з понад 120 унікальних героїв, 
+      кожен з яких має власні здібності та стиль гри. 
+      Командна стратегія, швидкі реакції та тактичне мислення вирішують долю кожної битви!
+    </p>
   </section>
 
   <!-- Герої -->
@@ -209,6 +132,14 @@
         <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pudge.png" alt="Pudge">
         <h3>Pudge</h3>
       </div>
+      <div class="card">
+        <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png" alt="Invoker">
+        <h3>Invoker</h3>
+      </div>
+      <div class="card">
+        <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/juggernaut.png" alt="Juggernaut">
+        <h3>Juggernaut</h3>
+      </div>
     </div>
   </section>
 
@@ -218,11 +149,15 @@
     <div class="news-list">
       <article>
         <h3>Новий патч 7.36</h3>
-        <p>Valve випустили великий апдейт із новими механіками!</p>
+        <p>Valve випустили великий апдейт із новими механіками, балансом та героями!</p>
       </article>
       <article>
         <h3>Інтернешнл</h3>
-        <p>Найбільший турнір року вже зовсім скоро!</p>
+        <p>Найбільший турнір року вже зовсім скоро! Кращі команди світу боротимуться за Aegis.</p>
+      </article>
+      <article>
+        <h3>Новий герой</h3>
+        <p>Valve анонсували нового героя, який принесе унікальний стиль гри у Dota 2.</p>
       </article>
     </div>
   </section>
@@ -230,32 +165,30 @@
   <!-- Footer -->
   <footer>
     <p>© 2025 Dota 2 Fan Site | Зроблено з ❤️</p>
+    <div class="socials">
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+      <a href="#">Twitter</a>
+    </div>
   </footer>
 
   <script>
-    // Плавна прокрутка при кліку на меню
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener("click", function(e) {
+    // Плавна прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(link=>{
+      link.addEventListener("click",function(e){
         e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth"
-        });
+        document.querySelector(this.getAttribute("href")).scrollIntoView({behavior:"smooth"});
       });
     });
 
-    // Анімація при появі елементів
-    const cards = document.querySelectorAll(".card, .news article");
-    const options = { threshold: 0.3 };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
+    // Анімація при появі
+    const items=document.querySelectorAll(".card, .news article");
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add("show");}
       });
-    }, options);
-
-    cards.forEach(card => observer.observe(card));
+    },{threshold:0.2});
+    items.forEach(i=>observer.observe(i));
   </script>
 </body>
 </html>
